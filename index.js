@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const ImprovedLink = (props) => (
+const ImprovedLink = ({ to: to, children: children, external: external, ...props}) => (
   external ? (
-    <a href={props.to} {...props}>{props.children}</a>
+    <a href={to} {...props}>{children}</a>
   ) : (
-    <Link to={props.to} {...props}>{props.children}</Link>
+    <Link to={to} {...props}>{children}</Link>
   )
 )
 
@@ -17,6 +17,7 @@ ImprovedLink.defaultProps = {
 
 ImprovedLink.propTypes = {
   external: PropTypes.bool,
+  to: PropTypes.string,
   children: PropTypes.any,
 }
 
